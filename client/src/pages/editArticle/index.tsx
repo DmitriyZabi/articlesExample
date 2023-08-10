@@ -1,15 +1,15 @@
 import { ArticleEditor } from 'features/article/createOrEditArticle'
 import { useParams } from 'react-router-dom'
 import { useAppSelector } from 'app/store/hooks/redux'
-import {
-  useGetMyArticleQuery,
-  useUpdateArticleMutation,
-} from 'app/store/articles/articles.api'
 import { Loader } from 'shared/components/loader'
 import { AlertError } from 'shared/components/alertError'
 import { PageTitle } from 'shared/components/layout/pageTitle'
 import { useEffect } from 'react'
 import { useActions } from 'app/store/hooks/actions'
+import {
+  useGetMyArticleQuery,
+  useUpdateArticleMutation,
+} from 'app/store/articles/endpoints/myArticles.endpoint'
 
 export function EditArticlePage() {
   const id: string = useParams().id || ''
@@ -24,7 +24,7 @@ export function EditArticlePage() {
     isError,
     error,
   } = useGetMyArticleQuery(
-    { articleId: id, token: user.token || '' },
+    { id: id, token: user.token || '' },
     { skip: !isChecked || !user.isAuthenticated }
   )
   //

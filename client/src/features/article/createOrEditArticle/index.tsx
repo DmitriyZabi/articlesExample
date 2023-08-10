@@ -34,7 +34,7 @@ export function ArticleEditor({
     if (title.length && body.length) {
       setDisabled(true)
       onUpdateArticle({
-        articleId: `${article?.id}`,
+        id: `${article?.id}`,
         title,
         body,
         imageFileName: image !== null ? image.name : null,

@@ -31,9 +31,9 @@ router.get('/getArticles', async (req, res) => {
   }
 })
 
-router.post('/getArticle', async (req, res) => {
+router.get('/getArticle/:id', async (req, res) => {
   try {
-    const { id } = req.body
+    const id = req.params.id
     if (id === undefined) {
       res.status(500).json('Something is wrong, please try again')
     }
@@ -65,9 +65,10 @@ router.post('/getArticle', async (req, res) => {
   }
 })
 
-router.post('/getArticleComments', async (req, res) => {
+router.get('/getArticleComments/:id', async (req, res) => {
   try {
-    const { id } = req.body
+    const id = req.params.id
+
     if (id === undefined) {
       res.status(500).json('Something is wrong, please try again')
     }
@@ -130,9 +131,9 @@ router.post('/addArticleComment', auth, async (req, res) => {
   }
 })
 
-router.post('/getMyArticle', auth, async (req, res) => {
+router.get('/getMyArticle/:id', auth, async (req, res) => {
   try {
-    const { id } = req.body
+    const id = req.params.id
     if (id === undefined) {
       res.status(500).json('Something is wrong, please try again')
     }
@@ -213,12 +214,12 @@ router.post('/createArticle', auth, async (req, res) => {
 
 router.patch('/updateArticle', auth, async (req, res) => {
   try {
-    const { articleId, title, body, imageFileName: image } = req.body
+    const { id, title, body, imageFileName: image } = req.body
 
     const findArticle = await db.article.findOne({
       attributes: ['id'],
       where: {
-        id: articleId,
+        id,
         userID: req.user.id,
       },
     })
@@ -234,11 +235,11 @@ router.patch('/updateArticle', auth, async (req, res) => {
       },
       {
         where: {
-          id: articleId,
+          id,
         },
       }
     )
-    res.status(201).json({ id: articleId })
+    res.status(201).json({ id })
   } catch (e) {
     res.status(500).json('Something is wrong, please try again')
   }
@@ -261,12 +262,12 @@ router.post('/upload', auth, async (req, res) => {
 
 router.delete('/removeArticle', auth, async (req, res) => {
   try {
-    const { articleId } = req.body
-    if (articleId) {
+    const { id } = req.body
+    if (id) {
       const findArticle = await db.article.findOne({
         attributes: ['id'],
         where: {
-          id: articleId,
+          id,
           userID: req.user.id,
         },
       })
@@ -276,7 +277,7 @@ router.delete('/removeArticle', auth, async (req, res) => {
 
       await db.comment.destroy({
         where: {
-          articleID: articleId,
+          articleID: id,
         },
       })
       await findArticle.destroy()

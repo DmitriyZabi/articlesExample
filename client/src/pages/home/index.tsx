@@ -1,4 +1,4 @@
-import { useGetArticlesQuery } from 'app/store/articles/articles.api'
+import { useGetArticlesQuery } from 'app/store/articles/endpoints/allArticles.endpoint'
 import { ArticleCard } from 'entities/article/ui/articleCard'
 import { AlertError } from 'shared/components/alertError'
 import { PageTitle } from 'shared/components/layout/pageTitle'

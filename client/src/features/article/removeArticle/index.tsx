@@ -1,10 +1,9 @@
-import { useRemoveArticleMutation } from 'app/store/articles/articles.api'
 import { IProps } from './model'
 import { useAppSelector } from 'app/store/hooks/redux'
 import { useActions } from 'app/store/hooks/actions'
 import { useEffect } from 'react'
-import { IToast } from 'entities/toast/model'
 import Button from '@mui/material/Button'
+import { useRemoveArticleMutation } from 'app/store/articles/endpoints/myArticles.endpoint'
 
 export function RemoveArticle({ id, onRemoveArticle }: IProps) {
   const [fetchRemoveArticle, { isLoading, isSuccess, isError, error }] =
@@ -20,7 +19,7 @@ export function RemoveArticle({ id, onRemoveArticle }: IProps) {
         text: 'Remove article',
         color: 'danger',
         onClick: async () => {
-          fetchRemoveArticle({ articleId: `${id}`, token: token || '' })
+          fetchRemoveArticle({ id: `${id}`, token: token || '' })
         },
       },
     })

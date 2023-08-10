@@ -3,7 +3,7 @@ import { IArticle } from 'entities/article/model'
 export interface IProps {
   article: IArticle | null
   onUpdateArticle(args: {
-    articleId: string
+    id: string
     title: string
     body: string
     imageFileName: string | null

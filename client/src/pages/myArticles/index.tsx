@@ -1,4 +1,3 @@
-import { useLazyGetMyArticlesQuery } from 'app/store/articles/articles.api'
 import { ArticleCard } from 'entities/article/ui/articleCard'
 import { useAppSelector } from 'app/store/hooks/redux'
 import { useEffect } from 'react'
@@ -6,6 +5,7 @@ import { Loader } from 'shared/components/loader'
 import { AlertError } from 'shared/components/alertError'
 import { PageTitle } from 'shared/components/layout/pageTitle'
 import { AlertInfo } from 'shared/components/alertInfo'
+import { useLazyGetMyArticlesQuery } from 'app/store/articles/endpoints/myArticles.endpoint'
 
 export function MyArticlesPage() {
   const { user, isChecked } = useAppSelector((store) => store.auth)

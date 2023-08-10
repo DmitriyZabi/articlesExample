@@ -3,10 +3,10 @@ import { ArticleEditor } from 'features/article/createOrEditArticle'
 import { Loader } from 'shared/components/loader'
 import { AlertError } from 'shared/components/alertError'
 import { PageTitle } from 'shared/components/layout/pageTitle'
-import { useCreateArticleMutation } from 'app/store/articles/articles.api'
 import { useEffect } from 'react'
 import { useActions } from 'app/store/hooks/actions'
 import { useNavigate } from 'react-router-dom'
+import { useCreateArticleMutation } from 'app/store/articles/endpoints/myArticles.endpoint'
 
 export function CreateArticlePage() {
   const { user, isChecked } = useAppSelector((store) => store.auth)

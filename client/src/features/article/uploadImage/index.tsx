@@ -1,4 +1,3 @@
-import { useLazyUploadImageQuery } from 'app/store/articles/articles.api'
 import { IProps } from './model'
 import Button from '@mui/material/Button'
 import { useAppSelector } from 'app/store/hooks/redux'
@@ -6,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Loader } from 'shared/components/loader'
 import { useActions } from 'app/store/hooks/actions'
 import styles from './ImageUploader.module.scss'
+import { useLazyUploadImageQuery } from 'app/store/articles/endpoints/articleImage.endpoint'
 
 export function ImageUploader({ image, onImageUpload }: IProps) {
   const [

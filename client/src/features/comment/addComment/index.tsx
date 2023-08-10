@@ -3,9 +3,9 @@ import { IProps } from './model'
 import { useAppSelector } from 'app/store/hooks/redux'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { useLazyAddArticleCommentQuery } from 'app/store/articles/articles.api'
 import { useActions } from 'app/store/hooks/actions'
 import { AlertWarning } from 'shared/components/alertWarning'
+import { useLazyAddArticleCommentQuery } from 'app/store/articles/endpoints/articleComments.endpoint'
 
 export function AddComment(props: IProps) {
   const { isAuthenticated, token } = useAppSelector((store) => store.auth.user)
