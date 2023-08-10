@@ -1,0 +1,24 @@
+{
+  "httpPort": 5000,
+  "httpsPort": 443,
+  "baseUrl": "http://localhost:3000",
+  "uploadsFolder": "uploads",
+  "dataBase": {
+    "HOST": "localhost",
+    "USER": "articlesUser",
+    "PASSWORD": "",
+    "DB": "dbArticles",
+    "dialect": "mysql",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  },
+  "jwtSecret": "Hello, world!",
+  "jwtExpiresIn": 600,
+  "googleClientId": "40809887355-ojgricpqssqb5gitvm9mes6h9m5qeknp.apps.googleusercontent.com",
+  "googleClientSecret": "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",
+  "googleClientRedirect": "http://localhost:5000/api/sessions/oauth/google"
+}
